@@ -1,0 +1,30 @@
+{
+  "name": "ARC54",
+  "desc": "",
+  "methods": [
+    {
+      "name": "optIntoASA",
+      "args": [
+        {
+          "name": "asa",
+          "type": "asset",
+          "desc": ""
+        }
+      ],
+      "desc": "",
+      "returns": {
+        "type": "void",
+        "desc": ""
+      }
+    },
+    {
+      "name": "createApplication",
+      "desc": "",
+      "returns": {
+        "type": "void",
+        "desc": ""
+      },
+      "args": []
+    }
+  ]
+}
