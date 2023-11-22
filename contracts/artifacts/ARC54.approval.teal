@@ -22,39 +22,28 @@ switch create_NoOp NOT_IMPLEMENTED NOT_IMPLEMENTED NOT_IMPLEMENTED NOT_IMPLEMENT
 NOT_IMPLEMENTED:
 	err
 
-// optIntoASA(asset)void
+// arc54_optIntoASA(asset)void
 //
 // /*
 // Sends an inner transaction to opt the contract account into an ASA.
-// Will fail if the contract is already opted in to the asset.
 // The fee for the inner transaction must be covered by the caller.
 //
 // @param asa The ASA to opt in to
-abi_route_optIntoASA:
+abi_route_arc54_optIntoASA:
 	// asa: asset
 	txna ApplicationArgs 1
 	btoi
 	txnas Assets
 
-	// execute optIntoASA(asset)void
-	callsub optIntoASA
+	// execute arc54_optIntoASA(asset)void
+	callsub arc54_optIntoASA
 	int 1
 	return
 
-optIntoASA:
+arc54_optIntoASA:
 	proto 1 0
 
-	// contracts/arc54.algo.ts:13
-	// assert(!globals.currentApplicationAddress.hasAsset(asa))
-	global CurrentApplicationAddress
-	frame_dig -1 // asa: asset
-	asset_holding_get AssetBalance
-	swap
-	pop
-	!
-	assert
-
-	// contracts/arc54.algo.ts:15
+	// contracts/arc54.algo.ts:12
 	// sendAssetTransfer({
 	//       assetReceiver: globals.currentApplicationAddress,
 	//       xferAsset: asa,
@@ -65,22 +54,22 @@ optIntoASA:
 	int axfer
 	itxn_field TypeEnum
 
-	// contracts/arc54.algo.ts:16
+	// contracts/arc54.algo.ts:13
 	// assetReceiver: globals.currentApplicationAddress
 	global CurrentApplicationAddress
 	itxn_field AssetReceiver
 
-	// contracts/arc54.algo.ts:17
+	// contracts/arc54.algo.ts:14
 	// xferAsset: asa
 	frame_dig -1 // asa: asset
 	itxn_field XferAsset
 
-	// contracts/arc54.algo.ts:18
+	// contracts/arc54.algo.ts:15
 	// assetAmount: 0
 	int 0
 	itxn_field AssetAmount
 
-	// contracts/arc54.algo.ts:19
+	// contracts/arc54.algo.ts:16
 	// fee: 0
 	int 0
 	itxn_field Fee
@@ -100,7 +89,7 @@ create_NoOp:
 	err
 
 call_NoOp:
-	method "optIntoASA(asset)void"
+	method "arc54_optIntoASA(asset)void"
 	txna ApplicationArgs 0
-	match abi_route_optIntoASA
+	match abi_route_arc54_optIntoASA
 	err

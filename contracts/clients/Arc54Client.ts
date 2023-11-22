@@ -26,7 +26,7 @@ import { SendTransactionResult, TransactionToSign, SendTransactionFrom } from '@
 import { Algodv2, OnApplicationComplete, Transaction, TransactionWithSigner, AtomicTransactionComposer } from 'algosdk'
 export const APP_SPEC: AppSpec = {
   "hints": {
-    "optIntoASA(asset)void": {
+    "arc54_optIntoASA(asset)void": {
       "call_config": {
         "no_op": "CALL"
       }
@@ -65,7 +65,7 @@ export const APP_SPEC: AppSpec = {
     }
   },
   "source": {
-    "approval": "I3ByYWdtYSB2ZXJzaW9uIDkKCi8vIFRoaXMgVEVBTCB3YXMgZ2VuZXJhdGVkIGJ5IFRFQUxTY3JpcHQgdjAuNjIuMgovLyBodHRwczovL2dpdGh1Yi5jb20vYWxnb3JhbmRmb3VuZGF0aW9uL1RFQUxTY3JpcHQKCi8vIFRoaXMgY29udHJhY3QgaXMgY29tcGxpYW50IHdpdGggYW5kL29yIGltcGxlbWVudHMgdGhlIGZvbGxvd2luZyBBUkNzOiBbIEFSQzQgXQoKLy8gVGhlIGZvbGxvd2luZyB0ZW4gbGluZXMgb2YgVEVBTCBoYW5kbGUgaW5pdGlhbCBwcm9ncmFtIGZsb3cKLy8gVGhpcyBwYXR0ZXJuIGlzIHVzZWQgdG8gbWFrZSBpdCBlYXN5IGZvciBhbnlvbmUgdG8gcGFyc2UgdGhlIHN0YXJ0IG9mIHRoZSBwcm9ncmFtIGFuZCBkZXRlcm1pbmUgaWYgYSBzcGVjaWZpYyBhY3Rpb24gaXMgYWxsb3dlZAovLyBIZXJlLCBhY3Rpb24gcmVmZXJzIHRvIHRoZSBPbkNvbXBsZXRlIGluIGNvbWJpbmF0aW9uIHdpdGggd2hldGhlciB0aGUgYXBwIGlzIGJlaW5nIGNyZWF0ZWQgb3IgY2FsbGVkCi8vIEV2ZXJ5IHBvc3NpYmxlIGFjdGlvbiBmb3IgdGhpcyBjb250cmFjdCBpcyByZXByZXNlbnRlZCBpbiB0aGUgc3dpdGNoIHN0YXRlbWVudAovLyBJZiB0aGUgYWN0aW9uIGlzIG5vdCBpbXBsbWVudGVkIGluIHRoZSBjb250cmFjdCwgaXRzIHJlcHNlY3RpdmUgYnJhbmNoIHdpbGwgYmUgIk5PVF9JTVBMTUVOVEVEIiB3aGljaCBqdXN0IGNvbnRhaW5zICJlcnIiCnR4biBBcHBsaWNhdGlvbklECmludCAwCj4KaW50IDYKKgp0eG4gT25Db21wbGV0aW9uCisKc3dpdGNoIGNyZWF0ZV9Ob09wIE5PVF9JTVBMRU1FTlRFRCBOT1RfSU1QTEVNRU5URUQgTk9UX0lNUExFTUVOVEVEIE5PVF9JTVBMRU1FTlRFRCBOT1RfSU1QTEVNRU5URUQgY2FsbF9Ob09wCgpOT1RfSU1QTEVNRU5URUQ6CgllcnIKCi8vIG9wdEludG9BU0EoYXNzZXQpdm9pZAovLwovLyAvKgovLyBTZW5kcyBhbiBpbm5lciB0cmFuc2FjdGlvbiB0byBvcHQgdGhlIGNvbnRyYWN0IGFjY291bnQgaW50byBhbiBBU0EuCi8vIFdpbGwgZmFpbCBpZiB0aGUgY29udHJhY3QgaXMgYWxyZWFkeSBvcHRlZCBpbiB0byB0aGUgYXNzZXQuCi8vIFRoZSBmZWUgZm9yIHRoZSBpbm5lciB0cmFuc2FjdGlvbiBtdXN0IGJlIGNvdmVyZWQgYnkgdGhlIGNhbGxlci4KLy8KLy8gQHBhcmFtIGFzYSBUaGUgQVNBIHRvIG9wdCBpbiB0bwphYmlfcm91dGVfb3B0SW50b0FTQToKCS8vIGFzYTogYXNzZXQKCXR4bmEgQXBwbGljYXRpb25BcmdzIDEKCWJ0b2kKCXR4bmFzIEFzc2V0cwoKCS8vIGV4ZWN1dGUgb3B0SW50b0FTQShhc3NldCl2b2lkCgljYWxsc3ViIG9wdEludG9BU0EKCWludCAxCglyZXR1cm4KCm9wdEludG9BU0E6Cglwcm90byAxIDAKCgkvLyBjb250cmFjdHMvYXJjNTQuYWxnby50czoxMwoJLy8gYXNzZXJ0KCFnbG9iYWxzLmN1cnJlbnRBcHBsaWNhdGlvbkFkZHJlc3MuaGFzQXNzZXQoYXNhKSkKCWdsb2JhbCBDdXJyZW50QXBwbGljYXRpb25BZGRyZXNzCglmcmFtZV9kaWcgLTEgLy8gYXNhOiBhc3NldAoJYXNzZXRfaG9sZGluZ19nZXQgQXNzZXRCYWxhbmNlCglzd2FwCglwb3AKCSEKCWFzc2VydAoKCS8vIGNvbnRyYWN0cy9hcmM1NC5hbGdvLnRzOjE1CgkvLyBzZW5kQXNzZXRUcmFuc2Zlcih7CgkvLyAgICAgICBhc3NldFJlY2VpdmVyOiBnbG9iYWxzLmN1cnJlbnRBcHBsaWNhdGlvbkFkZHJlc3MsCgkvLyAgICAgICB4ZmVyQXNzZXQ6IGFzYSwKCS8vICAgICAgIGFzc2V0QW1vdW50OiAwLAoJLy8gICAgICAgZmVlOiAwLAoJLy8gICAgIH0pCglpdHhuX2JlZ2luCglpbnQgYXhmZXIKCWl0eG5fZmllbGQgVHlwZUVudW0KCgkvLyBjb250cmFjdHMvYXJjNTQuYWxnby50czoxNgoJLy8gYXNzZXRSZWNlaXZlcjogZ2xvYmFscy5jdXJyZW50QXBwbGljYXRpb25BZGRyZXNzCglnbG9iYWwgQ3VycmVudEFwcGxpY2F0aW9uQWRkcmVzcwoJaXR4bl9maWVsZCBBc3NldFJlY2VpdmVyCgoJLy8gY29udHJhY3RzL2FyYzU0LmFsZ28udHM6MTcKCS8vIHhmZXJBc3NldDogYXNhCglmcmFtZV9kaWcgLTEgLy8gYXNhOiBhc3NldAoJaXR4bl9maWVsZCBYZmVyQXNzZXQKCgkvLyBjb250cmFjdHMvYXJjNTQuYWxnby50czoxOAoJLy8gYXNzZXRBbW91bnQ6IDAKCWludCAwCglpdHhuX2ZpZWxkIEFzc2V0QW1vdW50CgoJLy8gY29udHJhY3RzL2FyYzU0LmFsZ28udHM6MTkKCS8vIGZlZTogMAoJaW50IDAKCWl0eG5fZmllbGQgRmVlCgoJLy8gU3VibWl0IGlubmVyIHRyYW5zYWN0aW9uCglpdHhuX3N1Ym1pdAoJcmV0c3ViCgphYmlfcm91dGVfY3JlYXRlQXBwbGljYXRpb246CglpbnQgMQoJcmV0dXJuCgpjcmVhdGVfTm9PcDoKCW1ldGhvZCAiY3JlYXRlQXBwbGljYXRpb24oKXZvaWQiCgl0eG5hIEFwcGxpY2F0aW9uQXJncyAwCgltYXRjaCBhYmlfcm91dGVfY3JlYXRlQXBwbGljYXRpb24KCWVycgoKY2FsbF9Ob09wOgoJbWV0aG9kICJvcHRJbnRvQVNBKGFzc2V0KXZvaWQiCgl0eG5hIEFwcGxpY2F0aW9uQXJncyAwCgltYXRjaCBhYmlfcm91dGVfb3B0SW50b0FTQQoJZXJy",
+    "approval": "I3ByYWdtYSB2ZXJzaW9uIDkKCi8vIFRoaXMgVEVBTCB3YXMgZ2VuZXJhdGVkIGJ5IFRFQUxTY3JpcHQgdjAuNjIuMgovLyBodHRwczovL2dpdGh1Yi5jb20vYWxnb3JhbmRmb3VuZGF0aW9uL1RFQUxTY3JpcHQKCi8vIFRoaXMgY29udHJhY3QgaXMgY29tcGxpYW50IHdpdGggYW5kL29yIGltcGxlbWVudHMgdGhlIGZvbGxvd2luZyBBUkNzOiBbIEFSQzQgXQoKLy8gVGhlIGZvbGxvd2luZyB0ZW4gbGluZXMgb2YgVEVBTCBoYW5kbGUgaW5pdGlhbCBwcm9ncmFtIGZsb3cKLy8gVGhpcyBwYXR0ZXJuIGlzIHVzZWQgdG8gbWFrZSBpdCBlYXN5IGZvciBhbnlvbmUgdG8gcGFyc2UgdGhlIHN0YXJ0IG9mIHRoZSBwcm9ncmFtIGFuZCBkZXRlcm1pbmUgaWYgYSBzcGVjaWZpYyBhY3Rpb24gaXMgYWxsb3dlZAovLyBIZXJlLCBhY3Rpb24gcmVmZXJzIHRvIHRoZSBPbkNvbXBsZXRlIGluIGNvbWJpbmF0aW9uIHdpdGggd2hldGhlciB0aGUgYXBwIGlzIGJlaW5nIGNyZWF0ZWQgb3IgY2FsbGVkCi8vIEV2ZXJ5IHBvc3NpYmxlIGFjdGlvbiBmb3IgdGhpcyBjb250cmFjdCBpcyByZXByZXNlbnRlZCBpbiB0aGUgc3dpdGNoIHN0YXRlbWVudAovLyBJZiB0aGUgYWN0aW9uIGlzIG5vdCBpbXBsbWVudGVkIGluIHRoZSBjb250cmFjdCwgaXRzIHJlcHNlY3RpdmUgYnJhbmNoIHdpbGwgYmUgIk5PVF9JTVBMTUVOVEVEIiB3aGljaCBqdXN0IGNvbnRhaW5zICJlcnIiCnR4biBBcHBsaWNhdGlvbklECmludCAwCj4KaW50IDYKKgp0eG4gT25Db21wbGV0aW9uCisKc3dpdGNoIGNyZWF0ZV9Ob09wIE5PVF9JTVBMRU1FTlRFRCBOT1RfSU1QTEVNRU5URUQgTk9UX0lNUExFTUVOVEVEIE5PVF9JTVBMRU1FTlRFRCBOT1RfSU1QTEVNRU5URUQgY2FsbF9Ob09wCgpOT1RfSU1QTEVNRU5URUQ6CgllcnIKCi8vIGFyYzU0X29wdEludG9BU0EoYXNzZXQpdm9pZAovLwovLyAvKgovLyBTZW5kcyBhbiBpbm5lciB0cmFuc2FjdGlvbiB0byBvcHQgdGhlIGNvbnRyYWN0IGFjY291bnQgaW50byBhbiBBU0EuCi8vIFRoZSBmZWUgZm9yIHRoZSBpbm5lciB0cmFuc2FjdGlvbiBtdXN0IGJlIGNvdmVyZWQgYnkgdGhlIGNhbGxlci4KLy8KLy8gQHBhcmFtIGFzYSBUaGUgQVNBIHRvIG9wdCBpbiB0bwphYmlfcm91dGVfYXJjNTRfb3B0SW50b0FTQToKCS8vIGFzYTogYXNzZXQKCXR4bmEgQXBwbGljYXRpb25BcmdzIDEKCWJ0b2kKCXR4bmFzIEFzc2V0cwoKCS8vIGV4ZWN1dGUgYXJjNTRfb3B0SW50b0FTQShhc3NldCl2b2lkCgljYWxsc3ViIGFyYzU0X29wdEludG9BU0EKCWludCAxCglyZXR1cm4KCmFyYzU0X29wdEludG9BU0E6Cglwcm90byAxIDAKCgkvLyBjb250cmFjdHMvYXJjNTQuYWxnby50czoxMgoJLy8gc2VuZEFzc2V0VHJhbnNmZXIoewoJLy8gICAgICAgYXNzZXRSZWNlaXZlcjogZ2xvYmFscy5jdXJyZW50QXBwbGljYXRpb25BZGRyZXNzLAoJLy8gICAgICAgeGZlckFzc2V0OiBhc2EsCgkvLyAgICAgICBhc3NldEFtb3VudDogMCwKCS8vICAgICAgIGZlZTogMCwKCS8vICAgICB9KQoJaXR4bl9iZWdpbgoJaW50IGF4ZmVyCglpdHhuX2ZpZWxkIFR5cGVFbnVtCgoJLy8gY29udHJhY3RzL2FyYzU0LmFsZ28udHM6MTMKCS8vIGFzc2V0UmVjZWl2ZXI6IGdsb2JhbHMuY3VycmVudEFwcGxpY2F0aW9uQWRkcmVzcwoJZ2xvYmFsIEN1cnJlbnRBcHBsaWNhdGlvbkFkZHJlc3MKCWl0eG5fZmllbGQgQXNzZXRSZWNlaXZlcgoKCS8vIGNvbnRyYWN0cy9hcmM1NC5hbGdvLnRzOjE0CgkvLyB4ZmVyQXNzZXQ6IGFzYQoJZnJhbWVfZGlnIC0xIC8vIGFzYTogYXNzZXQKCWl0eG5fZmllbGQgWGZlckFzc2V0CgoJLy8gY29udHJhY3RzL2FyYzU0LmFsZ28udHM6MTUKCS8vIGFzc2V0QW1vdW50OiAwCglpbnQgMAoJaXR4bl9maWVsZCBBc3NldEFtb3VudAoKCS8vIGNvbnRyYWN0cy9hcmM1NC5hbGdvLnRzOjE2CgkvLyBmZWU6IDAKCWludCAwCglpdHhuX2ZpZWxkIEZlZQoKCS8vIFN1Ym1pdCBpbm5lciB0cmFuc2FjdGlvbgoJaXR4bl9zdWJtaXQKCXJldHN1YgoKYWJpX3JvdXRlX2NyZWF0ZUFwcGxpY2F0aW9uOgoJaW50IDEKCXJldHVybgoKY3JlYXRlX05vT3A6CgltZXRob2QgImNyZWF0ZUFwcGxpY2F0aW9uKCl2b2lkIgoJdHhuYSBBcHBsaWNhdGlvbkFyZ3MgMAoJbWF0Y2ggYWJpX3JvdXRlX2NyZWF0ZUFwcGxpY2F0aW9uCgllcnIKCmNhbGxfTm9PcDoKCW1ldGhvZCAiYXJjNTRfb3B0SW50b0FTQShhc3NldCl2b2lkIgoJdHhuYSBBcHBsaWNhdGlvbkFyZ3MgMAoJbWF0Y2ggYWJpX3JvdXRlX2FyYzU0X29wdEludG9BU0EKCWVycg==",
     "clear": "I3ByYWdtYSB2ZXJzaW9uIDk="
   },
   "contract": {
@@ -73,7 +73,7 @@ export const APP_SPEC: AppSpec = {
     "desc": "",
     "methods": [
       {
-        "name": "optIntoASA",
+        "name": "arc54_optIntoASA",
         "args": [
           {
             "name": "asa",
@@ -155,7 +155,7 @@ export type Arc54 = {
    * Maps method signatures / names to their argument and return types.
    */
   methods:
-    & Record<'optIntoASA(asset)void' | 'optIntoASA', {
+    & Record<'arc54_optIntoASA(asset)void' | 'arc54_optIntoASA', {
       argsObj: {
         asa: number | bigint
       }
@@ -241,15 +241,15 @@ export abstract class Arc54CallFactory {
   }
 
   /**
-   * Constructs a no op call for the optIntoASA(asset)void ABI method
+   * Constructs a no op call for the arc54_optIntoASA(asset)void ABI method
    *
    * @param args Any args for the contract call
    * @param params Any additional parameters for the call
    * @returns A TypedCallParams object for the call
    */
-  static optIntoAsa(args: MethodArgs<'optIntoASA(asset)void'>, params: AppClientCallCoreParams & CoreAppCallArgs) {
+  static arc54OptIntoAsa(args: MethodArgs<'arc54_optIntoASA(asset)void'>, params: AppClientCallCoreParams & CoreAppCallArgs) {
     return {
-      method: 'optIntoASA(asset)void' as const,
+      method: 'arc54_optIntoASA(asset)void' as const,
       methodArgs: Array.isArray(args) ? args : [args.asa],
       ...params,
     }
@@ -354,14 +354,14 @@ export class Arc54Client {
   }
 
   /**
-   * Calls the optIntoASA(asset)void ABI method.
+   * Calls the arc54_optIntoASA(asset)void ABI method.
    *
    * @param args The arguments for the contract call
    * @param params Any additional parameters for the call
    * @returns The result of the call
    */
-  public optIntoAsa(args: MethodArgs<'optIntoASA(asset)void'>, params: AppClientCallCoreParams & CoreAppCallArgs = {}) {
-    return this.call(Arc54CallFactory.optIntoAsa(args, params))
+  public arc54OptIntoAsa(args: MethodArgs<'arc54_optIntoASA(asset)void'>, params: AppClientCallCoreParams & CoreAppCallArgs = {}) {
+    return this.call(Arc54CallFactory.arc54OptIntoAsa(args, params))
   }
 
   public compose(): Arc54Composer {
@@ -370,8 +370,8 @@ export class Arc54Client {
     let promiseChain:Promise<unknown> = Promise.resolve()
     const resultMappers: Array<undefined | ((x: any) => any)> = []
     return {
-      optIntoAsa(args: MethodArgs<'optIntoASA(asset)void'>, params?: AppClientCallCoreParams & CoreAppCallArgs) {
-        promiseChain = promiseChain.then(() => client.optIntoAsa(args, {...params, sendParams: {...params?.sendParams, skipSending: true, atc}}))
+      arc54OptIntoAsa(args: MethodArgs<'arc54_optIntoASA(asset)void'>, params?: AppClientCallCoreParams & CoreAppCallArgs) {
+        promiseChain = promiseChain.then(() => client.arc54OptIntoAsa(args, {...params, sendParams: {...params?.sendParams, skipSending: true, atc}}))
         resultMappers.push(undefined)
         return this
       },
@@ -401,13 +401,13 @@ export class Arc54Client {
 }
 export type Arc54Composer<TReturns extends [...any[]] = []> = {
   /**
-   * Calls the optIntoASA(asset)void ABI method.
+   * Calls the arc54_optIntoASA(asset)void ABI method.
    *
    * @param args The arguments for the contract call
    * @param params Any additional parameters for the call
    * @returns The typed transaction composer so you can fluently chain multiple calls or call execute to execute all queued up transactions
    */
-  optIntoAsa(args: MethodArgs<'optIntoASA(asset)void'>, params?: AppClientCallCoreParams & CoreAppCallArgs): Arc54Composer<[...TReturns, MethodReturn<'optIntoASA(asset)void'>]>
+  arc54OptIntoAsa(args: MethodArgs<'arc54_optIntoASA(asset)void'>, params?: AppClientCallCoreParams & CoreAppCallArgs): Arc54Composer<[...TReturns, MethodReturn<'arc54_optIntoASA(asset)void'>]>
 
   /**
    * Makes a clear_state call to an existing instance of the ARC54 smart contract.

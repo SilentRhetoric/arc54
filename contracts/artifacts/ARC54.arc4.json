@@ -3,7 +3,7 @@
   "desc": "",
   "methods": [
     {
-      "name": "optIntoASA",
+      "name": "arc54_optIntoASA",
       "args": [
         {
           "name": "asa",
